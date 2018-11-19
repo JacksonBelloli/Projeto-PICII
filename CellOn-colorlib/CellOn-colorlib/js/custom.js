@@ -20,14 +20,17 @@ $(document).ready(function() {
         $("img.active").removeClass("active");
     });
     $('#comb').click(function(){
-        var selecionada = $("#film-1 img").attr("src");
-        $("div#film-1").css("display", "none");
-        $("div#film-2").css("display", "none");
-        $('<div class="col-md-12"><div class="link-modal"><img class="tam" src="' + selecionada + '"> </div></div>').insertAfter('div.single-contact');
-        $('img.tam').css('width', '200px');
-        $('a#comb').html('Voltar<span class="lnr lnr-arrow-right"></span>');
-        $('a#comb').css('top', '-315px');
-        $('a#comb').css('position', 'relative');
+        if (!$('#comb').attr('id').includes('back')){
+            var selecionada = $('#film-1 img').attr('src');
+            $('#film-1').css('display', 'none');
+            $('#film-2').css('display', 'none');
+            $('<div class="col-md-12"><div class="link-modal"><img class="tam" src="' + selecionada + '"> </div></div>').insertAfter('div.single-contact');
+            $('img.tam').css('width', '200px');
+            $('#comb').html('Voltar<span class="lnr lnr-arrow-right"></span>');
+            $('#comb').css('top', '-315px');
+            $('#comb').css('position', 'relative');
+            $('#comb').attr('id', 'back');
+        }        
     });
  });
 
