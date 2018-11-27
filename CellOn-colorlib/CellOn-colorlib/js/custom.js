@@ -1,7 +1,10 @@
 $(document).ready(function() {
+
     $('img').click(function() {
-         $('img.active').removeClass("active"); //aqui removemos a class do item anteriormente clicado para que possamos adicionar ao item clicado
-         $(this).addClass("active"); //aqui adicionamos a class ao item clicado
+         film1 = document.getElementById('remove-film1');
+         film2 = document.getElementById('remove-film2');
+         $('img.active').removeClass("active"); 
+         $(this).addClass("active"); 
      });
      $('#btnEscolher-1').click(function(){
         var selecionada = $("img.active").attr("src");
@@ -24,13 +27,18 @@ $(document).ready(function() {
             var selecionada = $('#film-1 img').attr('src');
             $('#film-1').css('display', 'none');
             $('#film-2').css('display', 'none');
-            $('<div class="col-md-12"><div class="link-modal"><img class="tam" src="' + selecionada + '"> </div></div>').insertAfter('div.single-contact');
+            $('<div id="result" class="col-md-12"><div class="link-modal"><img class="tam" src="' + selecionada + '"> </div></div>').insertAfter('div.single-contact');
             $('img.tam').css('width', '200px');
             $('#comb').html('Voltar<span class="lnr lnr-arrow-right"></span>');
-            $('#comb').css('top', '-315px');
-            $('#comb').css('position', 'relative');
             $('#comb').attr('id', 'back');
-        }        
+            film1.remove();
+            film2.remove();
+        }
+        if ($('#back').attr('id').includes('back')){
+            $('#result').remove();
+            film1.html().insertAfter('div.single-contact');
+            film2.html().insertAfter(film1);
+        }
     });
  });
 

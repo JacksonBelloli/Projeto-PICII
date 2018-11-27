@@ -76,12 +76,12 @@
 					<div class="single-contact col-md-12">
 						<h2 class="text-white text-center titulo">Recomendação de Filmes</h2>
 					</div>
-					<div class="col-md-6">
+					<div id="remove-film1" class="col-md-6">
 						<div class="link-modal">
 						<a data-toggle="modal" data-target="#modal-film-1"><div id="film-1" class="thumb-film"></div></a>
 					    </div> 
 					</div>
-					<div class="col-md-6">
+					<div id="remove-film2" class="col-md-6">
 						<div class="link-modal">
 						<a data-toggle="modal" data-target="#modal-film-2"><div id="film-2" class="thumb-film"></div></a>
 						</div>
@@ -131,13 +131,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-							<img class="filmes"  src="filmes/batman.jpg">
-							<img class="filmes"  src="filmes/black_panther.jpg">
-							<img class="filmes" src="filmes/nacho_libre.jpg">
-							<img class="filmes" src="filmes/secretaria.jpg">
-							<img class="filmes" src="filmes/show_girls.jpg">
-							<img class="filmes" src="filmes/walk_line.jpg">
-							<img class="filmes" src="filmes/xmen.jpg">
+
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -146,7 +140,6 @@
 					</div>
 				</div>
 			</div>
-
 
 
 		<script src="js/vendor/jquery-2.2.4.min.js"></script>
@@ -160,5 +153,21 @@
 		<script src="js/waypoints.min.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/custom.js"></script>
+		<script type="text/javascript">
+			var dir = "filmes/";
+			var fileextension = ".jpg";
+			$.ajax({
+				//This will retrieve the contents of the folder if the folder is configured as 'browsable'
+				url: dir,
+				success: function (data) {
+					//List all .png file names in the page
+					$(data).find("a:contains(" + fileextension + ")").each(function () {
+						var filename = this.href.replace(window.location.host, "").replace("http://", "");
+						console.log(filename)
+						$(".modal-body").append("<img class='filmes' src='" + dir + filename + "'>");
+					});
+				}
+			});
+		</script>
 	</body>
 </html>
