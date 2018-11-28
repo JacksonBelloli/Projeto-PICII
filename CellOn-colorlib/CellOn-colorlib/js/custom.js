@@ -22,25 +22,21 @@ $(document).ready(function() {
         $("img.new-2").attr("src", selecionada);
         $("img.active").removeClass("active");
     });
-    $('#comb').click(function(){
+    $('#comb').on('click', function(){
         if (!$('#comb').attr('id').includes('back')){
             var selecionada = $('#film-1 img').attr('src');
             $('#film-1').css('display', 'none');
             $('#film-2').css('display', 'none');
             $('<div id="result" class="col-md-12"><div class="link-modal"><img class="tam" src="' + selecionada + '"> </div></div>').insertAfter('div.single-contact');
             $('img.tam').css('width', '200px');
-            $('#comb').html('Voltar<span class="lnr lnr-arrow-right"></span>');
-            $('#comb').attr('id', 'back');
+            $('.btn-comb').html('<a class="genric-btn primary-border circle arrow" onclick="voltar();">Voltar<span class="lnr lnr-arrow-right"></span></a>');            
             film1.remove();
             film2.remove();
         }
-        if ($('#back').attr('id').includes('back')){
-            $('#result').remove();
-            film1.html().insertAfter('div.single-contact');
-            film2.html().insertAfter(film1);
-        }
     });
  });
-
+ function voltar(){
+    location.reload();
+}
 
 
