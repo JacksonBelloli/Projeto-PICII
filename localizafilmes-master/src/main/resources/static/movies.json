@@ -1,0 +1,22 @@
+[
+	{
+		"id": "1",
+		"title": "Halloween",
+		"year": 2018,
+		"duration": 240,
+		"categories": [
+			"horror",
+			"thriller"
+		]
+	},
+	{
+		"id": "2",
+		"title": "Avengers",
+		"year": 2018,
+		"duration": 240,
+		"categories": [
+			"horror",
+			"thriller"
+		]
+	}
+]

@@ -1,0 +1,52 @@
+.thumb-film{
+    width: 200px;
+    height: 300px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    background-color:rgb(255, 255, 255, 0.9); 
+    box-shadow: 0 0 3px gray;
+}
+.thumb-film:hover{
+    background-color: gray;
+    opacity: 0.7;
+    background-image: url(../img/icons/plus.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 1rem black;
+}
+.link-modal{
+    width: 200px;
+    height: 300px;
+    margin: 0 auto;
+}
+.link-modal a{
+    cursor: pointer;
+}
+.titulo{
+    margin-bottom: 30px;
+}
+.btn-comb{
+    margin: 0 auto;
+    margin-top: 70px;
+}
+.btn-area{
+    display: flex;
+}
+.filmes{
+    width: 200px;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.filmes:hover, img.active{
+    border: 1px solid rgba(108,187,35);
+    box-shadow: 5px 5px 1rem rgba(108,187,35);
+    z-index: 100;
+}
+.modal-body{
+    overflow: auto;
+    max-height: 550px !important;
+}
+.modal, .modal-content, .modal-dialog{
+    max-height: 95% !important;
+}

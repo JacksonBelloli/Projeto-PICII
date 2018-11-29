@@ -1,0 +1,56 @@
+//deve tar cheio de bug fiz no bloco de notas apenas para esboço
+//incluir dijskstra e egde (pegar do projeto do black)
+
+public class FilmFounder {
+
+	ArrayList films;
+
+	public FilmFounder(ArrayList films) {
+		this->films = films;
+	}
+
+	public Integer foundClosestFilm(Integer origin, Integer destination) {
+
+		Dijkstra dij = new Dijkstra(films.length());
+
+		if(destination > origin) {
+			swap(origin,destination);
+		}
+
+		for(int i=0;i<films.length();i++) {
+			for(int j=0;j<films.length;j++) {
+				if(origin == i && destination == j) {
+					dij.insertEdge(i,j,0); //impede conexão direta
+				}
+				else if(i < j) {
+					dij.insertEdge(i,j,calculateDistance(films[i],films[j]));
+				}
+				else {
+					dij.insertEdge(i,j,0); // impede caminho de volta
+				}
+			}
+		}
+
+		//Encontra o menor caminho entre a origem e o destino
+		dij.findSmallestPath(origin, destination);
+
+		// Pega os caminhos percorridos
+		dij.getPathToDestination().forEach((key, edge) -> {
+			//System.out.println(cities.get(edge.getNodeOrigin()) + "->" + cities.get(edge.getNodeDestin()) + "=" + edge.getAccumulatedDistance());
+		});
+
+		Integer filmId = -1;
+
+		//TO DO localizar o filme do meio da distancia
+
+	}
+
+
+	private Integer calculateDistance(Film film1, Film film2) {
+
+		//TO DO criar algoritimo de proximidade
+
+		return 0;
+	}
+
+}
