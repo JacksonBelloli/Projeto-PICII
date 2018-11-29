@@ -28,15 +28,21 @@ $(document).ready(function() {
     });
     $('#comb').on('click', function(){
         if (($('#film-1 img').attr('src') != null) && ($('#film-2 img').attr('src') != null)){
-            var film1 = $('#film-1 img').attr('data-name'),
-                film2 = $('#film-2 img').attr('data-name'),
-                new_film = EncontraFilm (film1, film2) ;
+            var film1 = $('#film-1 img').attr('data-name');
+            var film2 = $('#film-2 img').attr('data-name');
 
-            $('#remove-film1').remove();
-            $('#remove-film2').remove();
-            $('<div id="result" class="col-md-12"><div class="link-modal"><img class="tam" src="filmes/' + new_film + '.jpg"> </div></div>').insertAfter('div.single-contact');
-            $('img.tam').css('width', '200px');
-            $('.btn-comb').html('<a class="genric-btn primary-border circle arrow" onclick="voltar();">Voltar<span class="lnr lnr-arrow-right"></span></a>');
+            var new_film = '';
+
+            $.when(EncontraFilm(film1, film2)).done(function(response){
+              new_film = response;
+              $('#remove-film1').remove();
+              $('#remove-film2').remove();
+              $('<div id="result" class="col-md-12"><div class="link-modal"><img class="tam" src="filmes/' + new_film + '.jpg"> </div></div>').insertAfter('div.single-contact');
+              $('img.tam').css('width', '200px');
+              $('.btn-comb').html('<a class="genric-btn primary-border circle arrow" onclick="voltar()">Voltar<span class="lnr lnr-arrow-right"></span></a>');
+            });
+            
+            
         }else{
             return;
         }
